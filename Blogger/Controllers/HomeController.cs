@@ -21,7 +21,6 @@ namespace Blogger.Controllers
 		[HttpGet]
 		public ActionResult Index()
 		{
-			// Auth check below was added earlier today.
 			if (HttpContext.Request.Cookies["username"] == null)
 				return RedirectToAction("Login", "Account");
 			return View((Convertor.ReadAsMVCBlog(Access.GetBlogs()), HttpContext.Request.Cookies["username"]));
