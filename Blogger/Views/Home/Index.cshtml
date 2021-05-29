@@ -1,0 +1,45 @@
+﻿@using Blogger.Models;
+@model (List<Blog>, string)
+
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container">
+    <a class="btn btn-primary px-4 mt-3" asp-controller="Home" asp-action="Create">Create Post</a>
+
+    @foreach (Blog blog in Model.Item1)
+    {
+        <div class="card mt-3">
+            <div class="card-body row">
+                <div class="col">
+                    <div class="text-dark border-bottom">
+                        <span class="text-primary">
+                            <strong>@blog.Username</strong>
+                        </span>
+                        @blog.CreationDate.ToShortDateString()
+                    </div>
+                    <div>
+                        @if (@blog.Username == Model.Item2)
+                        {
+                            <a asp-action="Customize" asp-controller="Home" asp-route-id="@blog.Id">
+                                <h5 class="card-title">
+                                    @blog.Title
+                                </h5>
+                            </a>
+                        }
+                        else
+                        {
+                            <h5 class="card-title">
+                                @blog.Title
+                            </h5>
+                        }
+                        <p class="card-text">
+                            @blog.Content
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

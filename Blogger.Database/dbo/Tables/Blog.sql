@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Blog]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Title] NVARCHAR(100) NOT NULL, 
+    [Content] NVARCHAR(MAX) NOT NULL, 
+    [CreationDate] DATE NOT NULL DEFAULT GETDATE(), 
+    [Username] NVARCHAR(50) NOT NULL
+)

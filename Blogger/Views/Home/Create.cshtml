@@ -1,0 +1,25 @@
+﻿@using Blogger.Models;
+@{
+    ViewData["Title"] = "Create Blog";
+}
+@functions{
+    Blog blog = new Blog();
+}
+
+<div class="container text-center">
+    <div class="h4">Create your Post</div>
+    <form class="bg-light" method="post" asp-action="Edit">
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <label class="form-text" asp-for="@blog.Title">Title</label>
+            <input asp-for="@blog.Title" class="form-control" />
+            <span asp-validation-for="@blog.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="form-text" asp-for="@blog.Content">Content</label>
+            <input asp-for="@blog.Content" class="form-control" />
+            <span asp-validation-for="@blog.Content" class="text-danger"></span>
+        </div>
+        <button class="btn btn-outline-primary" type="submit" asp-action="Create">Post</button>
+    </form>
+</div>

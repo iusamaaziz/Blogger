@@ -1,0 +1,33 @@
+﻿@using Blogger.Models;
+@model Blog
+
+@{
+    ViewData["Title"] = $"{Model.Title}";
+}
+
+<div class="container">
+    <div class="card mt-3">
+        <div class="card-body row">
+            <div class="col">
+                <div class="text-dark border-bottom">
+                    <span class="text-primary">
+                        <strong>@Model.Username</strong>
+                    </span>
+                    @Model.CreationDate.ToShortDateString()
+                </div>
+                <div class="text-dark border-bottom mt-2 mb-2">
+                    <a class="btn btn-dark text-light btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                    <a class="btn btn-danger text-light btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+                </div>
+                <div>
+                    <h5 class="card-title">
+                        @Model.Title
+                    </h5>
+                    <p class="card-text">
+                        @Model.Content
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
